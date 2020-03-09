@@ -5,7 +5,7 @@
 # Date: 2020-03-09
 #
 # Purpose:
-# Run MCMC analysis of onset-to-recovery distribution, with Bayesian imputation
+# Run MCMC analysis of onset-to-recovery distribution with Bayesian imputation
 # of onset-to-report times.
 #
 # ------------------------------------------------------------------
@@ -39,6 +39,9 @@ data <- subset(data, outcome == "recovery")
 # define growth rate based on local vs. non-local
 data$growth_rate <- ifelse(data$local_transmission_TRUE_FALSE, 0.14, 0.05)
 
+# DEBUG - REDUCE DATA SIZE FOR TESTING
+#data <- data[sample(nrow(data), 50), ]
+
 # get data into drjacoby format
 x <- c(data$rel_date_onset,
        data$rel_date_report,
@@ -46,13 +49,12 @@ x <- c(data$rel_date_onset,
        data$date_onset_imputed,
        data$growth_rate)
 
-
 # ------------------------------------------------------------------
 # MCMC parameters
 
 # sampling parameters
-burnin <- 1e2
-samples <- 1e2
+burnin <- 1e3
+samples <- 1e3
 chains <- 5
 run_parallel <- TRUE
 n_cores <- 5
@@ -112,10 +114,10 @@ if (run_parallel) {
 samples_otr <- subset(mcmc_otr$output, stage == "sampling", select = param_names)
 
 # posterior histograms
-hist_otr_m_or <- posterior_hist(samples_otr, "m_or", breaks = seq(10,40,0.2)) + ggtitle("m_or")
-hist_otr_s_or <- posterior_hist(samples_otr, "s_or", breaks = seq(0,1,0.01)) + ggtitle("s_or")
-hist_otr_m_op <- posterior_hist(samples_otr, "m_op", breaks = seq(0,10,0.1)) + ggtitle("m_op")
-hist_otr_s_op <- posterior_hist(samples_otr, "s_op", breaks = seq(0,1,0.01)) + ggtitle("s_op")
+hist_otr_m_or <- posterior_hist(samples_otr, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
+hist_otr_s_or <- posterior_hist(samples_otr, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
+hist_otr_m_op <- posterior_hist(samples_otr, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
+hist_otr_s_op <- posterior_hist(samples_otr, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
 
 # combined plot
 cp_otr <- cowplot::plot_grid(hist_otr_m_or,

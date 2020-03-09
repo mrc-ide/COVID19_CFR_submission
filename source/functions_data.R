@@ -12,16 +12,19 @@ prepare_data_international <- function(data,
   data$date_admission <- as.Date(data$date_hospitalized_dd_mm_yyyy, date_format)
   data$date_confirmed <- as.Date(data$date_confirmed_dd_mm_yyyy, date_format)
   
+  # ensure case has outcome date, along with either onset or report date
+  data <- subset(data, !is.na(date_outcome) & !(is.na(data$date_onset) & is.na(data$date_report)))
+  
+  # identify which cases require imputation of onset date, and set to report date
+  w <- which(is.na(data$date_onset))
+  data$date_onset_imputed <- FALSE
+  data$date_onset_imputed[w] <- TRUE
+  data$date_onset[w] <- data$date_report[w]
+  
   # make dates relative to an index day
   data$rel_date_report <- as.numeric(data$date_report - first_reliable_onset)
   data$rel_date_onset <- as.numeric(data$date_onset - first_reliable_onset)
   data$rel_date_outcome <- as.numeric(data$date_outcome - first_reliable_onset)
-  
-  # ensure case has outcome date, along with either onset or report date
-  data <- subset(data, !is.na(date_outcome) & !(is.na(data$date_onset) & is.na(data$date_report)))
-  
-  # specify which dates require imputation
-  data$date_onset_imputed <- is.na(data$date_onset)
   
   # bundle local transmission criteria into yes/no
   yes_levels <- c("y", "y - confirm", "y - confirmed", "y - implied", "y -implied")

@@ -41,6 +41,6 @@ posterior_hist <- function(df_plot, name, breaks = NULL) {
   # produce plot
   ggplot2::ggplot(df_plot) + ggplot2::theme_bw() +
     ggplot2::geom_histogram(ggplot2::aes(x = .data[[name]]),
-                            breaks = breaks, fill = "deepskyblue3", col = NA) + 
+                            breaks = breaks, fill = "darkblue", col = NA) + 
     ggplot2::xlab(name) + ggplot2::ylab("Count")
 }
