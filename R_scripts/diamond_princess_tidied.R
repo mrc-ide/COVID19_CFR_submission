@@ -6,7 +6,7 @@ library(binom)
 logit<-function(x) log(x/(1-x))
 invlogit<-function(x) exp(x)/(1+exp(x))
 
-tests<-read.csv("C:/Users/Lucy/Dropbox (SPH Imperial College)/2019 nCov Lucy/Analysis/test_dates_dp.csv")
+tests<-read.csv("data/test_dates_dp.csv")
 
 date_format <- "%d/%m/%Y"
 tests$date_report<-as.numeric(as.Date(as.character(tests$date_report),date_format))
