@@ -1,6 +1,6 @@
 
 # ------------------------------------------------------------------
-# process international data
+# prepare international data
 prepare_data_international <- function(data,
                                        first_reliable_onset = as.Date("2020-01-01"),
                                        date_format = "%Y-%m-%d") {
@@ -13,13 +13,21 @@ prepare_data_international <- function(data,
   data$date_confirmed <- as.Date(data$date_confirmed_dd_mm_yyyy, date_format)
   
   # ensure case has outcome date, along with either onset or report date
-  data <- subset(data, !is.na(date_outcome) & !(is.na(data$date_onset) & is.na(data$date_report)))
+  data <- subset(data, !is.na(date_outcome) & !(is.na(date_onset) & is.na(date_report)))
+  
+  # dates must be ordered: onset <= report <= outcome
+  w <- which((data$date_onset > data$date_report) | (data$date_report > data$date_outcome))
+  if (any(w)) {
+    data <- data[-w,]
+  }
   
   # identify which cases require imputation of onset date, and set to report date
   w <- which(is.na(data$date_onset))
-  data$date_onset_imputed <- FALSE
-  data$date_onset_imputed[w] <- TRUE
-  data$date_onset[w] <- data$date_report[w]
+  if (any(w)) {
+    data$date_onset_imputed <- FALSE
+    data$date_onset_imputed[w] <- TRUE
+    data$date_onset[w] <- data$date_report[w]
+  }
   
   # make dates relative to an index day
   data$rel_date_report <- as.numeric(data$date_report - first_reliable_onset)

@@ -79,6 +79,7 @@ n_impute <- sum(data$date_onset_imputed)
 df_params <- rbind(df_params,
                    data.frame(name = sprintf("delta%s", 1:n_impute), min = 0, max = 50, init = 3))
 
+
 # ------------------------------------------------------------------
 # Run MCMC
 
@@ -91,14 +92,14 @@ if (run_parallel) {
 # run MCMC
 set.seed(1)
 t0 <- Sys.time()
-mcmc_otr <- run_mcmc(data = x,
-                     df_params = df_params,
-                     loglike = cpp_loglike_otr,
-                     logprior = cpp_flat_prior,
-                     chains = chains,
-                     burnin = burnin,
-                     samples = samples,
-                     cluster = cl)
+mcmc <- run_mcmc(data = x,
+                 df_params = df_params,
+                 loglike = cpp_loglike_otr,
+                 logprior = cpp_flat_prior,
+                 chains = chains,
+                 burnin = burnin,
+                 samples = samples,
+                 cluster = cl)
 
 Sys.time() - t0
 if (run_parallel) {
@@ -109,16 +110,16 @@ if (run_parallel) {
 # Post-processing
 
 # posterior diagnostic plots
-#plot_par(mcmc_otr, show = param_names)
+#plot_par(mcmc, show = param_names)
 
-# subset to sampling iterations from desired parameters only
-samples_otr <- subset(mcmc_otr$output, stage == "sampling", select = param_names)
+# subset to sampling iterations and desired parameters only
+mcmc_samples <- subset(mcmc$output, stage == "sampling", select = param_names)
 
 # posterior histograms
-hist_otr_m_or <- posterior_hist(samples_otr, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
-hist_otr_s_or <- posterior_hist(samples_otr, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
-hist_otr_m_op <- posterior_hist(samples_otr, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
-hist_otr_s_op <- posterior_hist(samples_otr, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
+hist_otr_m_or <- posterior_hist(mcmc_samples, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
+hist_otr_s_or <- posterior_hist(mcmc_samples, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
+hist_otr_m_op <- posterior_hist(mcmc_samples, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
+hist_otr_s_op <- posterior_hist(mcmc_samples, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
 
 # combined plot
 cp_otr <- cowplot::plot_grid(hist_otr_m_or,
@@ -128,17 +129,18 @@ cp_otr <- cowplot::plot_grid(hist_otr_m_or,
 cp_otr
 
 # posterior summaries
-summary_otr <- apply(samples_otr, 2, posterior_summary)
-summary_otr <- rbind(summary_otr, ESS = round(mcmc_otr$diagnostics$ess[param_names], digits = 0))
+summary_otr <- apply(mcmc_samples, 2, posterior_summary)
+summary_otr <- rbind(summary_otr, ESS = round(mcmc$diagnostics$ess[param_names], digits = 0))
 
 summary_otr
+
 
 # ------------------------------------------------------------------
 # Write to file
 
 if (FALSE) {  # safety catch to avoid accidental overwriting
   
-  # write summary to file
+  # save summary table
   write.csv(summary_otr, "output/summary_otr.csv", row.names = TRUE)
   
 }

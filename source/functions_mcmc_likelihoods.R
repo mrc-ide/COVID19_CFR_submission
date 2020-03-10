@@ -31,7 +31,7 @@ cpp_otd_prior <- "SEXP logprior(std::vector<double> params) {
 }"
 
 # ------------------------------------------------------------------
-# log likelihood for onset-to-recovery analysis
+# loglikelihood onset-to-recovery analysis
 # note that the C++ function Rcpp::stats::pgamma_1(x*b, a, true, true) is
 # equivalent to the R function pgamma(x, shape = a, rate = b, lower.tail = TRUE,
 # log.p = TRUE)
@@ -113,7 +113,9 @@ cpp_loglike_otr <- "SEXP loglike(std::vector<double> params, std::vector<double>
     }
     
     // onset-to-report
-    {
+    // check for -1, indicating missing report date
+    if (t_report[i] != -1) {
+      
       // get separate parts that make up likelihood
       double l1 = Rcpp::stats::pgamma_1((otp_interval + 1)*(beta_op + r), alpha_op, true, true);
       double l2 = Rcpp::stats::pgamma_1(otp_interval*(beta_op + r), alpha_op, true, true);
@@ -135,7 +137,7 @@ cpp_loglike_otr <- "SEXP loglike(std::vector<double> params, std::vector<double>
 }"
 
 # ------------------------------------------------------------------
-# log likelihood for international CFR analysis
+# loglikelihood international CFR analysis
 # note that the C++ function Rcpp::stats::pgamma_1(x*b, a, true, true) is
 # equivalent to the R function pgamma(x, shape = a, rate = b, lower.tail = TRUE,
 # log.p = TRUE)
@@ -264,7 +266,9 @@ cpp_loglike_cfr <- "SEXP loglike(std::vector<double> params, std::vector<double>
       }
       
       // onset-to-report
-      {
+      // check for -1, indicating missing report date
+      if (t_report[i] != -1) {
+        
         // get separate parts that make up likelihood
         double l1 = Rcpp::stats::pgamma_1((otp_interval + 1)*(beta_op + r), alpha_op, true, true);
         double l2 = Rcpp::stats::pgamma_1(otp_interval*(beta_op + r), alpha_op, true, true);

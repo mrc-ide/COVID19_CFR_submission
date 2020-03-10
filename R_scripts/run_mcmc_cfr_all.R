@@ -32,6 +32,9 @@ data <- read.csv("output/data_international_processed_mcmc.csv", stringsAsFactor
 # subset to ensure locality info present
 data <- subset(data, !is.na(local_transmission_TRUE_FALSE))
 
+# use -1 to indicate that report date is missing
+data$rel_date_report[is.na(data$rel_date_report)] <- -1
+
 # use all data, therefore none of this data is recovery only
 data$recovery_only <- FALSE
 
@@ -55,8 +58,8 @@ x <- c(data$rel_date_onset,
 # MCMC parameters
 
 # sampling parameters
-burnin <- 1e3
-samples <- 1e3
+burnin <- 1e2
+samples <- 1e2
 chains <- 5
 run_parallel <- TRUE
 n_cores <- 5
@@ -100,14 +103,14 @@ if (run_parallel) {
 # run MCMC
 set.seed(1)
 t0 <- Sys.time()
-mcmc_cfr <- run_mcmc(data = x,
-                     df_params = df_params,
-                     loglike = cpp_loglike_cfr,
-                     logprior = cpp_otd_prior,
-                     chains = chains,
-                     burnin = burnin,
-                     samples = samples,
-                     cluster = cl)
+mcmc <- run_mcmc(data = x,
+                 df_params = df_params,
+                 loglike = cpp_loglike_cfr,
+                 logprior = cpp_otd_prior,
+                 chains = chains,
+                 burnin = burnin,
+                 samples = samples,
+                 cluster = cl)
 
 Sys.time() - t0
 if (run_parallel) {
@@ -118,20 +121,20 @@ if (run_parallel) {
 # Post-processing
 
 # posterior diagnostic plots
-#plot_par(mcmc_cfr, show = param_names)
+#plot_par(mcmc, show = param_names)
 
-# subset to sampling iterations from desired parameters only
-samples_cfr <- subset(mcmc_cfr$output, stage == "sampling", select = param_names)
+# subset to sampling iterations and desired parameters only
+mcmc_samples <- subset(mcmc$output, stage == "sampling", select = param_names)
 
 # posterior histograms
-hist_cfr_m_od <- posterior_hist(samples_cfr, "m_od", breaks = seq(10,40,l=101)) + ggtitle("m_od")
-hist_cfr_s_od <- posterior_hist(samples_cfr, "s_od", breaks = seq(0,1,l=101)) + ggtitle("s_od")
-hist_cfr_m_or <- posterior_hist(samples_cfr, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
-hist_cfr_s_or <- posterior_hist(samples_cfr, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
-hist_cfr_m_op <- posterior_hist(samples_cfr, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
-hist_cfr_s_op <- posterior_hist(samples_cfr, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
-hist_cfr_cfr <- posterior_hist(samples_cfr, "cfr", breaks = seq(0,1,l=101)) + ggtitle("cfr")
-hist_cfr_p <- posterior_hist(samples_cfr, "p", breaks = seq(0,1,l=101)) + ggtitle("p")
+hist_cfr_m_od <- posterior_hist(mcmc_samples, "m_od", breaks = seq(10,40,l=101)) + ggtitle("m_od")
+hist_cfr_s_od <- posterior_hist(mcmc_samples, "s_od", breaks = seq(0,1,l=101)) + ggtitle("s_od")
+hist_cfr_m_or <- posterior_hist(mcmc_samples, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
+hist_cfr_s_or <- posterior_hist(mcmc_samples, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
+hist_cfr_m_op <- posterior_hist(mcmc_samples, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
+hist_cfr_s_op <- posterior_hist(mcmc_samples, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
+hist_cfr_cfr <- posterior_hist(mcmc_samples, "cfr", breaks = seq(0,1,l=101)) + ggtitle("cfr")
+hist_cfr_p <- posterior_hist(mcmc_samples, "p", breaks = seq(0,1,l=101)) + ggtitle("p")
 
 # combined plot
 cp_cfr <- cowplot::plot_grid(hist_cfr_m_od,
@@ -145,8 +148,8 @@ cp_cfr <- cowplot::plot_grid(hist_cfr_m_od,
 cp_cfr
 
 # posterior summaries
-summary_cfr <- apply(samples_cfr, 2, posterior_summary)
-summary_cfr <- rbind(summary_cfr, ESS = round(mcmc_cfr$diagnostics$ess[param_names], digits = 0))
+summary_cfr <- apply(mcmc_samples, 2, posterior_summary)
+summary_cfr <- rbind(summary_cfr, ESS = round(mcmc$diagnostics$ess[param_names], digits = 0))
 
 summary_cfr
 
@@ -155,7 +158,7 @@ summary_cfr
 
 if (FALSE) {  # safety catch to avoid accidental overwriting
   
-  # write summary to file
+  # save summary table
   write.csv(summary_cfr, "output/summary_cfr_all.csv", row.names = TRUE)
   
 }

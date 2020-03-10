@@ -5,7 +5,7 @@
 # Date: 2020-03-09
 #
 # Purpose:
-# Read in raw international data, process into simpler form and save into
+# Read in raw international data, process into convenient form and save into
 # outputs folder.
 #
 # ------------------------------------------------------------------

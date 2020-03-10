@@ -184,7 +184,6 @@
 "italy017",51,51,51,"recovery",TRUE,NA,NA
 "italy018",51,51,51,"recovery",TRUE,76,NA
 "italy019",51,51,51,"recovery",TRUE,NA,NA
-"italy020",52,52,51,"recovery",TRUE,NA,NA
 "italy021",52,52,55,"other",TRUE,NA,NA
 "italy022",52,52,55,"other",TRUE,NA,NA
 "italy023",52,52,55,"other",TRUE,NA,NA
@@ -484,7 +483,6 @@
 "japan012",29,22,55,"other",FALSE,25,FALSE
 "japan013",30,19,55,"other",FALSE,25,TRUE
 "japan_asymp003",30,30,55,"other",TRUE,35,FALSE
-"japan_asymp004",30,31,55,"other",FALSE,55,FALSE
 "japan014",31,31,55,"other",TRUE,45,FALSE
 "japan015",31,25,55,"other",FALSE,45,FALSE
 "japan_asymp005",31,31,55,"other",TRUE,35,FALSE
@@ -513,7 +511,6 @@
 "japan031",44,31,55,"other",FALSE,75,TRUE
 "japan032",44,35,53,"recovery",FALSE,65,TRUE
 "japan033",44,34,55,"other",FALSE,55,TRUE
-"japan034",44,19,43,"recovery",FALSE,75,TRUE
 "japan035",44,33,55,"other",FALSE,65,TRUE
 "japan036",44,30,55,"other",FALSE,55,TRUE
 "japan037",44,40,55,"other",FALSE,35,TRUE
@@ -669,10 +666,7 @@ NA,48,46,55,"other",FALSE,35,TRUE
 "malaysia020",45,45,55,"other",TRUE,27,NA
 "malaysia021",45,45,55,"other",TRUE,32,NA
 "malaysia022",45,45,55,"other",TRUE,83,NA
-"nepal001",23,2,17,"recovery",FALSE,32,FALSE
 "philippines001",29,29,39,"recovery",TRUE,38,FALSE
-"philippines002",32,24,31,"death",FALSE,44,FALSE
-"philippines003",35,21,30,"recovery",FALSE,60,FALSE
 "russia001",30,30,41,"recovery",TRUE,NA,NA
 "russia002",30,30,42,"recovery",TRUE,NA,NA
 "singapore001",22,19,55,"other",FALSE,66,FALSE
@@ -1147,7 +1141,6 @@ NA,48,46,55,"other",FALSE,35,TRUE
 "southkorea922",55,55,55,"other",TRUE,NA,NA
 "southkorea923",55,55,55,"other",TRUE,NA,NA
 "southkorea924",55,55,55,"other",TRUE,NA,NA
-"southkorea925",55,55,54,"death",TRUE,68,NA
 "southkorea926",55,55,55,"other",TRUE,NA,NA
 "southkorea927",55,55,55,"other",TRUE,NA,NA
 "southkorea928",55,55,55,"other",TRUE,NA,NA
@@ -1226,7 +1219,6 @@ NA,48,46,55,"other",FALSE,35,TRUE
 "taiwan016",36,31,55,"other",FALSE,45,TRUE
 "taiwan017",38,26,55,"other",FALSE,25,TRUE
 "taiwan018",39,39,55,"other",TRUE,25,TRUE
-"taiwan019",46,26,45,"death",FALSE,65,TRUE
 "taiwan020",46,46,55,"other",TRUE,51,NA
 "taiwan021",47,36,55,"other",FALSE,85,TRUE
 "taiwan022",47,27,55,"other",FALSE,35,TRUE
@@ -1239,7 +1231,6 @@ NA,48,46,55,"other",FALSE,35,TRUE
 "taiwan029",54,28,55,"other",FALSE,45,NA
 "taiwan030",54,36,55,"other",FALSE,75,NA
 "taiwan031",55,55,55,"other",TRUE,NA,NA
-"Thai001",13,4,12,"recovery",FALSE,61,FALSE
 "Thai002",16,12,16,"recovery",FALSE,74,FALSE
 "Thai003",21,14,25,"recovery",FALSE,73,FALSE
 "Thai004",21,18,25,"recovery",FALSE,68,FALSE
