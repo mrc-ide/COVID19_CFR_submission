@@ -1,12 +1,11 @@
 
-# run_mcmc_onset_to_recovery.R
+# run_mcmc_cfr_all.R
 #
 # Author: Bob Verity
 # Date: 2020-03-09
 #
 # Purpose:
-# Run MCMC analysis of onset-to-recovery distribution with Bayesian imputation
-# of onset-to-report times.
+# Analysis of CFR using all international data.
 #
 # ------------------------------------------------------------------
 # Load packages and functions
@@ -33,8 +32,8 @@ data <- read.csv("output/data_international_processed_mcmc.csv", stringsAsFactor
 # subset to ensure locality info present
 data <- subset(data, !is.na(local_transmission_TRUE_FALSE))
 
-# subset to recoveries only
-data <- subset(data, outcome == "recovery")
+# use all data, therefore none of this data is recovery only
+data$recovery_only <- FALSE
 
 # define growth rate based on local vs. non-local
 data$growth_rate <- ifelse(data$local_transmission_TRUE_FALSE, 0.14, 0.05)
@@ -47,7 +46,9 @@ data$growth_rate <- ifelse(data$local_transmission_TRUE_FALSE, 0.14, 0.05)
 x <- c(data$rel_date_onset,
        data$rel_date_report,
        data$rel_date_outcome,
+       match(data$outcome, c("death", "recovery", "other")),
        data$date_onset_imputed,
+       data$recovery_only,
        data$growth_rate)
 
 # ------------------------------------------------------------------
@@ -61,14 +62,22 @@ run_parallel <- TRUE
 n_cores <- 5
 
 # specify key parameters
+# m_od: mean onset to death
+# s_od: SD to mean ratio onset to death
 # m_or: mean onset to recovery
 # s_or: SD to mean ratio onset to recovery
 # m_op: mean onset to report
 # s_op: SD to mean ratio onset to report
-df_params <- rbind.data.frame(list("m_or", 0, 100, 10),
+# cfr: Case fatality rate
+# p: probability of recovery being correctly recorded
+df_params <- rbind.data.frame(list("m_od", 0, 100, 10),
+                              list("s_od", 0, 1, 0.5),
+                              list("m_or", 0, 100, 10),
                               list("s_or", 0, 1, 0.5),
                               list("m_op", 0, 100, 10),
-                              list("s_op", 0, 1, 0.5))
+                              list("s_op", 0, 1, 0.5),
+                              list("cfr", 0, 1, 0.5),
+                              list("p", 0, 1, 0.5))
 names(df_params) <- c("name", "min", "max", "init")
 
 # get key parameter names
@@ -91,10 +100,10 @@ if (run_parallel) {
 # run MCMC
 set.seed(1)
 t0 <- Sys.time()
-mcmc_otr <- run_mcmc(data = x,
+mcmc_cfr <- run_mcmc(data = x,
                      df_params = df_params,
-                     loglike = cpp_loglike_otr,
-                     logprior = cpp_flat_prior,
+                     loglike = cpp_loglike_cfr,
+                     logprior = cpp_otd_prior,
                      chains = chains,
                      burnin = burnin,
                      samples = samples,
@@ -109,29 +118,37 @@ if (run_parallel) {
 # Post-processing
 
 # posterior diagnostic plots
-#plot_par(mcmc_otr, show = param_names)
+#plot_par(mcmc_cfr, show = param_names)
 
 # subset to sampling iterations from desired parameters only
-samples_otr <- subset(mcmc_otr$output, stage == "sampling", select = param_names)
+samples_cfr <- subset(mcmc_cfr$output, stage == "sampling", select = param_names)
 
 # posterior histograms
-hist_otr_m_or <- posterior_hist(samples_otr, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
-hist_otr_s_or <- posterior_hist(samples_otr, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
-hist_otr_m_op <- posterior_hist(samples_otr, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
-hist_otr_s_op <- posterior_hist(samples_otr, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
+hist_cfr_m_od <- posterior_hist(samples_cfr, "m_od", breaks = seq(10,40,l=101)) + ggtitle("m_od")
+hist_cfr_s_od <- posterior_hist(samples_cfr, "s_od", breaks = seq(0,1,l=101)) + ggtitle("s_od")
+hist_cfr_m_or <- posterior_hist(samples_cfr, "m_or", breaks = seq(10,40,l=101)) + ggtitle("m_or")
+hist_cfr_s_or <- posterior_hist(samples_cfr, "s_or", breaks = seq(0,1,l=101)) + ggtitle("s_or")
+hist_cfr_m_op <- posterior_hist(samples_cfr, "m_op", breaks = seq(0,20,l=101)) + ggtitle("m_op")
+hist_cfr_s_op <- posterior_hist(samples_cfr, "s_op", breaks = seq(0,1,l=101)) + ggtitle("s_op")
+hist_cfr_cfr <- posterior_hist(samples_cfr, "cfr", breaks = seq(0,1,l=101)) + ggtitle("cfr")
+hist_cfr_p <- posterior_hist(samples_cfr, "p", breaks = seq(0,1,l=101)) + ggtitle("p")
 
 # combined plot
-cp_otr <- cowplot::plot_grid(hist_otr_m_or,
-                             hist_otr_s_or,
-                             hist_otr_m_op,
-                             hist_otr_s_op)
-cp_otr
+cp_cfr <- cowplot::plot_grid(hist_cfr_m_od,
+                             hist_cfr_s_od,
+                             hist_cfr_m_or,
+                             hist_cfr_s_or,
+                             hist_cfr_m_op,
+                             hist_cfr_s_op,
+                             hist_cfr_cfr,
+                             hist_cfr_p)
+cp_cfr
 
 # posterior summaries
-summary_otr <- apply(samples_otr, 2, posterior_summary)
-summary_otr <- rbind(summary_otr, ESS = round(mcmc_otr$diagnostics$ess[param_names], digits = 0))
+summary_cfr <- apply(samples_cfr, 2, posterior_summary)
+summary_cfr <- rbind(summary_cfr, ESS = round(mcmc_cfr$diagnostics$ess[param_names], digits = 0))
 
-summary_otr
+summary_cfr
 
 # ------------------------------------------------------------------
 # Write to file
@@ -139,7 +156,7 @@ summary_otr
 if (FALSE) {  # safety catch to avoid accidental overwriting
   
   # write summary to file
-  write.csv(summary_otr, "output/summary_otr.csv", row.names = TRUE)
+  write.csv(summary_cfr, "output/summary_cfr_all.csv", row.names = TRUE)
   
 }
 
