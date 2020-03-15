@@ -28,8 +28,8 @@ source("source/functions_utils.R")
 # Data preperation
 
 # define subsetting, and create appropriate suffix for all outputs
-subset_young <- FALSE
-suff <- ifelse(subset_young, "_under60", "_60orover")
+subset_under60 <- FALSE
+suff <- ifelse(subset_under60, "_under60", "_60orover")
 
 # read in processed international data
 data <- read.csv("output/data_international_processed_mcmc.csv", stringsAsFactors = FALSE)
@@ -46,7 +46,7 @@ data <- subset(data, !is.na(age_years))
 # subset based on age. Recoveries that do not pass this filter are still
 # retained and used to estimate onset-to-recovery distributions, accounting for
 # epidemic growth
-if (subset_young) {
+if (subset_under60) {
   data <- subset(data, (age_years < 60) | outcome == "recovery")
   data$recovery_only <- (data$age_years >= 60)
 } else {
@@ -57,6 +57,9 @@ if (subset_young) {
 # DEBUG - REDUCE DATA SIZE FOR TESTING
 #set.seed(1)
 #data <- data[sample(nrow(data), 50), ]
+
+# explore data
+table(data$age_years < 60, data$outcome)
 
 # get data into drjacoby format
 x <- c(data$rel_date_onset,

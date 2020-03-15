@@ -44,10 +44,10 @@ data$growth_rate <- ifelse(data$local_transmission_TRUE_FALSE, 0.14, 0.05)
 # still retained and used to estimate onset-to-recovery distributions,
 # accounting for epidemic growth
 if (subset_local) {
-  data <- subset(data, local_transmission_TRUE_FALSE | outcome == "recovery")
+  data <- subset(data, local_transmission_TRUE_FALSE == TRUE | outcome == "recovery")
   data$recovery_only <- (data$local_transmission_TRUE_FALSE == FALSE)
 } else {
-  data <- subset(data, local_transmission_TRUE_FALSE | outcome == "recovery")
+  data <- subset(data, local_transmission_TRUE_FALSE == FALSE | outcome == "recovery")
   data$recovery_only <- (data$local_transmission_TRUE_FALSE == TRUE)
 }
 
@@ -71,8 +71,8 @@ x <- c(data$rel_date_onset,
 # MCMC parameters
 
 # sampling parameters
-burnin <- 1e2
-samples <- 1e2
+burnin <- 1e3
+samples <- 1e5
 chains <- 5
 run_parallel <- TRUE
 n_cores <- 5

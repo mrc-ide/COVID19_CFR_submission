@@ -55,7 +55,7 @@ x <- c(data$rel_date_onset,
 
 # sampling parameters
 burnin <- 1e3
-samples <- 1e3
+samples <- 1e5
 chains <- 5
 run_parallel <- TRUE
 n_cores <- 5
