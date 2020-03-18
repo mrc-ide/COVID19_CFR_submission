@@ -1,0 +1,29 @@
+country,total_cases,reported_in_media,missing,recoveries_reported,individual_recoveries_identified,unassigned_recoveries,critical_reported,deaths_reported,url,url2,notes
+Australia,15,15,0,8,6,2,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+Belgium,1,1,0,1,1,0,NA,NA,NA,NA,NA
+Cambodia,1,1,0,1,1,0,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+Canada,8,8,0,1,1,0,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+Egypt,1,1,0,NA,0,0,NA,NA,NA,NA,NA
+Finland,1,1,0,1,1,0,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+France,12,12,0,5,3,2,1,1,https://www.worldometers.info/coronavirus/,NA,NA
+Germany,16,16,0,7,0,7,NA,NA,https://www.stmgp.bayern.de/presse/bayerisches-gesundheitsministerium-bis-montagmittag-keine-neuen-bestaetigten-coronavirus/,NA,NA
+HK SAR,61,61,0,1,1,0,2,1,https://www.worldometers.info/coronavirus/,https://twitter.com/MoHFW_INDIA/status/1228177257102921728,NA
+Italy,3,3,0,3,0,3,NA,NA,https://www.freepressjournal.in/india/coronavirus-heres-indian-health-ministrys-discharge-policy-for-cases,NA,NA
+India,3,3,0,NA,0,0,2,NA,https://www.worldometers.info/coronavirus/,NA,1 amongst repatriated reported discharged on 14/02/2020
+Japan,75,66,-9,11,6,5,4,1,https://www.worldometers.info/coronavirus/,NA,NA
+Macau SAR,10,10,0,3,1,2,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+Malaysia,22,22,0,11,10,1,NA,NA,https://twitter.com/MelGohCNA/status/1228259598026428416,https://www.channelnewsasia.com/news/asia/malaysia-covid-19-coronavirus-grand-hyatt-servomex-recovered-12442252,NA
+Nepal,1,1,0,1,1,0,NA,NA,https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30067-0/fulltext,NA,NA
+Philippines,3,3,0,2,2,0,NA,1,https://www.worldometers.info/coronavirus/,NA,NA
+Russia,2,2,0,2,2,0,NA,NA,https://www.worldometers.info/coronavirus/,https://www.moh.gov.sg/news-highlights/details/eight-more-confirmed-cases-of-covid-19-infection,https://www.moh.gov.sg/news-highlights/details/two-more-cases-discharged-nine-new-cases-of-covid-19-infection-confirmed
+Singapore,81,81,0,29,22,7,4,NA,https://www.worldometers.info/coronavirus/,https://www.moh.gov.sg/news-highlights/details/five-more-cases-discharged-four-new-cases-of-covid-19-infection-confirmed,NA
+South Korea,31,31,0,12,12,0,NA,NA,https://www.cdc.go.kr/board/board.es?mid=a30402000000&bid=0030,NA,NA
+Spain,2,2,0,2,2,0,NA,NA,NA,NA,NA
+Sri Lanka,1,1,0,1,1,0,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+Sweden,1,1,0,NA,0,0,NA,NA,NA,NA,NA
+Taiwan,22,22,0,2,2,0,NA,1,https://www.cdc.gov.tw/En/Bulletin/Detail/Rk2zh24U0NhIbUFdfhbrwg?typeid=158,https://www.channelnewsasia.com/news/asia/coronavirus-covid19-taiwan-first-death-12439978,13 recoveries reported 14/02 https://ddc.moph.go.th/viralpneumonia/
+Thailand,35,35,0,15,10,5,1,NA,https://www.bangkokpost.com/thailand/general/1859434/thailand-records-1-new-case-of-coronavirus,https://www.arabianbusiness.com/healthcare/440162-three-of-eight-coronavirus-patients-fully-recovered-says-health-ministry,NA
+UAE,9,9,0,3,3,0,1,NA,https://www.worldometers.info/coronavirus/,NA,NA
+UK,9,9,0,8,6,2,NA,NA,https://www.worldometers.info/coronavirus/,NA,NA
+USA,15,15,0,3,2,1,NA,NA,https://www.nytimes.com/2020/02/15/world/asia/coronavirus-china-live-updates.html#link-313a84de,NA,NA
+Vietnam,16,16,0,11,9,2,NA,NA,https://ncov.moh.gov.vn/,NA,NA
