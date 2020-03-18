@@ -1,8 +1,5 @@
 # Output summary: Age stratified CFR
 
-# Run name
-run_name <- "full_uncertainty"
-
 # Load packages
 library(dplyr)
 library(tidyr)
@@ -13,7 +10,7 @@ library(patchwork)
 source("source/mcmc_summary.R")
 source("source/mcmc_and_likelihood_functions.R")
 
-# Read input raw data - Check this is up to date
+# Read input raw data
 data <- readRDS("data/age_disaggregated_onset_incidence_data.rds")
 observed_deaths <- c(0, 1, 7, 18, 38, 130, 309, 312, 208)
 observed_cases <- c(416, 549, 3619, 7600, 8571, 10008, 8583, 3918, 1408)
@@ -27,7 +24,7 @@ m <- readRDS("data/MCMC_fitting_output.rds")
 data_list <- readRDS("data/predicted_x.rds")
 
 ### Processing MCMC output #####################################################
-# Estimate age specific CFRs from reference group CFRs and relative risks
+# Estimate age specific CFRs from reference group CFR and relative risks
 for (i in grep("RR", names(m))) {
   new_name <- sub("RR", "cfr", names(m)[i])
   m$new <- unname(m$`cfr_80+`) * unlist(unname(m[, i]))
@@ -60,7 +57,6 @@ fit_prediction <- apply(predict_par, 1, function(row_params){
   lL_plane(row_params, data_list)
 })
 
-## is the x here playing not nicely with the x in the function(s) below
 ag <- unique(data$age_groups)
 fit_prediction_deaths <- bind_rows(lapply(fit_prediction, function(x){
   out <- x$age_deaths
@@ -98,7 +94,7 @@ data2 <- data %>%
   summarise(cases = sum(cases),
             nici = unique(nici)) %>%
   ungroup()
-# Find the z for "gold standard" cases ascertainemtn outside of Wuhan
+# Find the z for "gold standard" cases ascertainment outside of Wuhan
 best_z <- min(data[data$location == "Outside", "nici"])
 # Predict adjusted cases and infections | z, ni/ci and y
 predicted <- bind_rows(lapply(1:nrow(m_thin), function(x, data2, m_thin, best_z){
@@ -332,7 +328,7 @@ proportion_infections_severe <- predicted %>%
   summarise(hosp = list(summarise_mcmc(hosp))) %>%
   unnest(col = c(hosp))
 proportion_infections_severe$mode[proportion_infections_severe$mode < 0 ] <- 0
-# Comparative methods
+# Comparative method
 proportion_observed_cases_severe * filter(af_age, type == "infections")$mean
 ################################################################################
 
@@ -407,7 +403,7 @@ study_data <- binom::binom.confint(observed_deaths, observed_cases, method = "ex
 ################################################################################
 
 # Output_table #################################################################
-# Formatting output to go into manuscripit tables
+# Formatting output to go into manuscript tables
 options(scipen = 50)
 
 study_data_table <- data.frame(

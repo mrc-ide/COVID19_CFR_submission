@@ -89,6 +89,7 @@ mcmc_output <- run_mcmc(data = x,
                         burnin = burnin,
                         samples = samples,
                         chains = 1)
+# (Run with chains > 1 for convergence checks)
 saveRDS(mcmc_output, "data/complete_output.rds")
 saveRDS(mcmc_output$output, "data/MCMC_fitting_output.rds") # save the MCMC output
 saveRDS(list(inputs = x, 
