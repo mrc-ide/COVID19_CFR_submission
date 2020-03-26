@@ -1,49 +1,49 @@
-death_id,linelist_id,linelist notes,name,sex,age,date_onset,date_report,date_confirmed,date_hospitalised,date_icu,date_tested,date_death,onset to hosp,onset to death,hospitalization to death,pneumonia,images_positive,cough,fever,sputum,vomitting,breathing_difficulties,fatigue,headache,dizziness,nasal_congestion,weakness,intubated,shock,coma,unconscious_or_blurred_conscious,drowsiness,pleural_effusion,pleural_adhesion,respiratory_failure,septic_shock,microcirculation_failure,coagulation_dysfunction,severity_classification,underlying_medical_conditions
-death001,41,hospitalization dates differ very slightly - matches first consultation date in the linelist,zeng,male,61,20/12/2019,,,27/12/2019,28/12/2019,,09/01/2020,7,20,13,,,yes,yes,,,,,,,,yes,yes,yes,yes,,,,,,,,,,"liver cirrhosis, myoxma"
-death002,6,"onset date out by a day and hospitalized date matches first consultation, outcome date here",xiong,male,69,31/12/2019,,,03/01/2020,,,15/01/2020,3,15,12,yes,,,,,,,,,,,,yes,,,yes,,yes,,yes,yes,yes,yes,,
-death003,64,linelist has onset date equal to hospitalisation date here,wang,male,89,,,08/01/2020,"""08/01/2020""",,,18/01/2020,,,,yes,,,,,,,,,,,,,,,yes,yes,yes,yes,yes,,,,,"hypertension, cerebral infarction, cerebral softening"
-death004,171,"onset dates differ, hospitalization date equals date of first consultation in linelist",chen,male,89,13/01/2020,,18/01/2020,18/01/2020,,,19/01/2020,5,6,1,yes,yes,,,,,yes,,,,,,,,,,,,,,,,,,"hypertension, diabetes, coronary heart disease, frequent ventricular premature beats, coronary stent implantation"
-death005,,"three 66 year olds in linelist, none match exactly",li,male,66,,,16/01/2020,16/01/2020,,,20/01/2020,,,4,yes,yes,yes,yes,,,,yes,yes,,,,,,,,,,,yes,,,,,"copd, hypertension, type II diabetes, chronic renal insufficiency, ascending aortic artificial aorta replacement, abdominal aortic stent replacement, cholecystectomy, multiple organ damage."
-death006,234,clear match,wang,male,75,06/01/2020,,,11/01/2020,15/01/2020,,20/01/2020,5,14,9,,yes,yes,yes,yes,yes,,yes,yes,yes,yes,,,,,,,,,,,,,critical,"hypertension, hip arthroplasty"
-death007,4,clear match,yin,female,48,10/12/2019,,,31/12/2019,,,20/01/2020,21,41,20,,yes,yes,,yes,,yes,,,,,,yes,,,,,,,,,,,,"diabetes, cerebral infarction"
-death008,,"no clear match, 82 yold male but onset 15th",liu,male,82,09/01/2020,,,14/01/2020,,,21/01/2020,5,12,7,,,,,,,,,,,,,,,,,,,,yes,,,,,
-death009,5,"onset one day out, hospitalisation matches date of first consultation",luo,male,66,22/12/2019,,,31/12/2019,,,21/01/2020,9,30,21,,yes,yes,no,,,yes,,,,,,,,,,,,,yes,,,,,
-death010,349,clear match,zhang,male,81,15/01/2020,,,18/01/2020,,,22/01/2020,3,7,4,yes,yes,,yes,,,,,,,,,,,,,,,,,,,,,
-death011,114,clear match,zhang,female,82,03/01/2020,,06/01/2020,06/01/2020,,,22/01/2020,3,19,16,yes,,yes,yes,,,yes,,,,,,yes,,,,,,,yes,,,,,parkinsons
-death012,,no clear match,,male,65,08/01/2020,,,11/01/2020,,,21/01/2020,3,13,10,yes,,,,,,yes,yes,,,,,yes,,,,,,,,,,,,
-death013,159,"possible match, hospitalization matches date of first consulation and death date matches",hu,female,80,11/01/2020,,20/01/2020,18/01/2020,,,22/01/2020,7,11,4,,,yes,yes,,,,,,,,,yes,,,,,,,,,,,critical,"diabetes, parkinsons"
-death014,331,possible match on hospitalization and death dates but onset dates differ,lei,male,53,,,,13/01/2020,,,21/01/2020,,,8,,yes,yes,yes,,,,,,,,,,,,,,,,,,,,critical,
-death015,120,clear match,wang,male,86,02/01/2020,,,09/01/2020,,,21/01/2020,7,19,12,,yes,,no,,,yes,yes,,,,,no,,,,,,,,,,,,
-death016,,no match,yuan,female,70,,,,13/01/2020,,,21/01/2020,,,8,yes,yes,,yes,,,,,,,,,,,,yes,,,,yes,,,,,
-death017,,no match,zhan,male,84,06/01/2020,,,09/01/2020,18/01/2020,,22/01/2020,3,16,13,,,yes,yes,,,yes,,,,,,,,,,,,,,,,,,"chronic bronchitis, unstable angina pectoris, coronary stenting, hypertension, gastrointestinal bleeding, renal insufficiency, hyperlipidemia, hyperuricemia, lacunar cerebral infarction"
-death018,,,zhao,female,85,,,,"""26/11/2019""",,,21/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death019,,,yin,female,69,,,20/01/2020,14/01/2020,,,22/01/2020,,,8,,,,,,,,,,,,,,,,,,,,,,,,,
-death020,,,li,male,36,06/01/2020,,,09/01/2020,,,23/01/2020,3,17,14,,,,,,,,,,,,,,,,,,,,,,,,,
-death021,,,zhang,male,73,29/12/2019,,,05/01/2020,,,22/01/2020,7,24,17,,,,,,,,,,,,,,,,,,,,,,,,,
-death022,,,shao,female,70,18/01/2020,,,21/01/2020,,,23/01/2020,3,5,2,,,,,,,,,,,,,,,,,,,,,,,,,
-death023,,,liu,male,81,09/01/2020,,,13/01/2020,,,21/01/2020,4,12,8,,,,,,,,,,,,,,,,,,,,,,,,,
-death024,,,zhang,female,65,,,23/01/2020,13/01/2020,,,23/01/2020,,,10,,,,,,,,,,,,,,,,,,,,,,,,,
-death025,,,chen,male,70,15/01/2020,,,19/01/2020,,,23/01/2020,4,8,4,,,,,,,,,,,,,,,,,,,,,,,,,
-death026,,,cheng,female,76,18/01/2020,,,"""05/01/2020""",,,24/01/2020,,6,,,,,,,,,,,,,,,,,,,,,,,,,,
-death027,,,deng,male,72,11/01/2020,,,18/01/2020,,,23/01/2020,7,12,5,,,,,,,,,,,,,,,,,,,,,,,,,
-death028,,,hong,male,79,11/01/2020,,,17/01/2020,,,24/01/2020,6,13,7,,,,,,,,,,,,,,,,,,,,,,,,,
-death029,,,le,male,55,08/01/2020,,,19/01/2020,,,24/01/2020,11,16,5,,,,,,,,,,,,,,,,,,,,,,,,,
-death030,,,li,male,87,12/01/2020,,,19/01/2020,,,23/01/2020,7,11,4,,,,,,,,,,,,,,,,,,,,,,,,,
-death031,,,liu,female,66,09/01/2020,,,19/01/2020,,,21/01/2020,10,12,2,,,,,,,,,,,,,,,,,,,,,,,,,
-death032,,,liu,male,58,03/01/2020,,,18/01/2020,,,24/01/2020,15,21,6,,,,,,,,,,,,,,,,,,,,,,,,,
-death033,,,liu,male,66,,,,11/01/2020,,,21/01/2020,,,10,,,,,,,,,,,,,,,,,,,,,,,,,
-death034,,,luo,male,78,13/01/2020,,,23/01/2020,,,24/01/2020,10,11,1,,,,,,,,,,,,,,,,,,,,,,,,,
-death035,,,song,male,65,12/01/2020,,,16/01/2020,,,23/01/2020,4,11,7,,,,,,,,,,,,,,,,,,,,,,,,,
-death036,,,wu,male,67,10/01/2020,,,15/01/2020,,,24/01/2020,5,14,9,,,,,,,,,,,,,,,,,,,,,,,,,
-death037,,,yang,male,58,27/12/2019,,,01/01/2020,,,23/01/2020,5,27,22,,,,,,,,,,,,,,,,,,,,,,,,,
-death038,,,zhang,female,67,05/01/2020,,,12/01/2020,,,23/01/2020,7,18,11,,,,,,,,,,,,,,,,,,,,,,,,,
-death039,,,zhou,female,82,10/01/2020,,,17/01/2020,,,23/01/2020,7,13,6,,,,,,,,,,,,,,,,,,,,,,,,,
-death040,,,,male,88,,,,,,,25/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death041,,,,female,66,02/02/2020,,,03/02/2020,,,05/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death042,,,,male,50,13/01/2020,,,21/01/2020,,,27/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death043,,,,female,80,,,,23/01/2020,,,29/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death044,,,weilang li,male,33,10/01/2020,,,13/01/2020,,,06/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death045,,date of report 07/02/2020 but no explicit date of death given,,male,55,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death046,,date of report 13/02/2020 but no explicit date of death given,,male,75,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death047,,,,female,80,,,,,,,17/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-death048,,,,female,85,23/01/2020,,,23/01/2020,,,08/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+death_id,linelist_id,linelist notes,name,sex,age,date_onset,date_report,date_confirmed,date_hospitalised,date_icu,date_tested,date_death,onset to hosp,onset to death,hospitalization to death,pneumonia,images_positive,cough,fever,sputum,vomitting,breathing_difficulties,fatigue,headache,dizziness,nasal_congestion,weakness,intubated,shock,coma,unconscious_or_blurred_conscious,drowsiness,pleural_effusion,pleural_adhesion,respiratory_failure,septic_shock,microcirculation_failure,coagulation_dysfunction,severity_classification,underlying_medical_conditions,URL
+death001,41,hospitalization dates differ very slightly - matches first consultation date in the linelist,zeng,male,61,20/12/2019,,,27/12/2019,28/12/2019,,09/01/2020,7,20,13,,,yes,yes,,,,,,,,yes,yes,yes,yes,,,,,,,,,,"liver cirrhosis, myoxma",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death002,6,"onset date out by a day and hospitalized date matches first consultation, outcome date here",xiong,male,69,31/12/2019,,,03/01/2020,,,15/01/2020,3,15,12,yes,,,,,,,,,,,,yes,,,yes,,yes,,yes,yes,yes,yes,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death003,64,linelist has onset date equal to hospitalisation date here,wang,male,89,,,08/01/2020,08/01/2020,,,18/01/2020,,,,yes,,,,,,,,,,,,,,,yes,yes,yes,yes,yes,,,,,"hypertension, cerebral infarction, cerebral softening",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death004,171,"onset dates differ, hospitalization date equals date of first consultation in linelist",chen,male,89,13/01/2020,,18/01/2020,18/01/2020,,,19/01/2020,5,6,1,yes,yes,,,,,yes,,,,,,,,,,,,,,,,,,"hypertension, diabetes, coronary heart disease, frequent ventricular premature beats, coronary stent implantation",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death005,,"three 66 year olds in linelist, none match exactly",li,male,66,,,16/01/2020,16/01/2020,,,20/01/2020,,,4,yes,yes,yes,yes,,,,yes,yes,,,,,,,,,,,yes,,,,,"copd, hypertension, type II diabetes, chronic renal insufficiency, ascending aortic artificial aorta replacement, abdominal aortic stent replacement, cholecystectomy, multiple organ damage.",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death006,234,clear match,wang,male,75,06/01/2020,,,11/01/2020,15/01/2020,,20/01/2020,5,14,9,,yes,yes,yes,yes,yes,,yes,yes,yes,yes,,,,,,,,,,,,,critical,"hypertension, hip arthroplasty",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death007,4,clear match,yin,female,48,10/12/2019,,,31/12/2019,,,20/01/2020,21,41,20,,yes,yes,,yes,,yes,,,,,,yes,,,,,,,,,,,,"diabetes, cerebral infarction",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death008,,"no clear match, 82 yold male but onset 15th",liu,male,82,09/01/2020,,,14/01/2020,,,21/01/2020,5,12,7,,,,,,,,,,,,,,,,,,,,yes,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death009,5,"onset one day out, hospitalisation matches date of first consultation",luo,male,66,22/12/2019,,,31/12/2019,,,21/01/2020,9,30,21,,yes,yes,no,,,yes,,,,,,,,,,,,,yes,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death010,349,clear match,zhang,male,81,15/01/2020,,,18/01/2020,,,22/01/2020,3,7,4,yes,yes,,yes,,,,,,,,,,,,,,,,,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death011,114,clear match,zhang,female,82,03/01/2020,,06/01/2020,06/01/2020,,,22/01/2020,3,19,16,yes,,yes,yes,,,yes,,,,,,yes,,,,,,,yes,,,,,parkinsons,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death012,,no clear match,,male,65,08/01/2020,,,11/01/2020,,,21/01/2020,3,13,10,yes,,,,,,yes,yes,,,,,yes,,,,,,,,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death013,159,"possible match, hospitalization matches date of first consulation and death date matches",hu,female,80,11/01/2020,,20/01/2020,18/01/2020,,,22/01/2020,7,11,4,,,yes,yes,,,,,,,,,yes,,,,,,,,,,,critical,"diabetes, parkinsons",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death014,331,possible match on hospitalization and death dates but onset dates differ,lei,male,53,,,,13/01/2020,,,21/01/2020,,,8,,yes,yes,yes,,,,,,,,,,,,,,,,,,,,critical,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death015,120,clear match,wang,male,86,02/01/2020,,,09/01/2020,,,21/01/2020,7,19,12,,yes,,no,,,yes,yes,,,,,no,,,,,,,,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death016,,no match,yuan,female,70,,,,13/01/2020,,,21/01/2020,,,8,yes,yes,,yes,,,,,,,,,,,,yes,,,,yes,,,,,,http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death017,,no match,zhan,male,84,06/01/2020,,,09/01/2020,18/01/2020,,22/01/2020,3,16,13,,,yes,yes,,,yes,,,,,,,,,,,,,,,,,,"chronic bronchitis, unstable angina pectoris, coronary stenting, hypertension, gastrointestinal bleeding, renal insufficiency, hyperlipidemia, hyperuricemia, lacunar cerebral infarction",http://www.nhc.gov.cn/xcs/yqtb/202001/5d19a4f6d3154b9fae328918ed2e3c8a.shtml
+death018,,,zhao,female,85,,,,26/11/2019,,,21/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death019,,,yin,female,69,,,20/01/2020,14/01/2020,,,22/01/2020,,,8,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death020,,,li,male,36,06/01/2020,,,09/01/2020,,,23/01/2020,3,17,14,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death021,,,zhang,male,73,29/12/2019,,,05/01/2020,,,22/01/2020,7,24,17,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death022,,,shao,female,70,18/01/2020,,,21/01/2020,,,23/01/2020,3,5,2,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death023,,,liu,male,81,09/01/2020,,,13/01/2020,,,21/01/2020,4,12,8,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death024,,,zhang,female,65,,,23/01/2020,13/01/2020,,,23/01/2020,,,10,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/fbjd/dtyw/202001/t20200124_2014626.shtml
+death025,,,chen,male,70,15/01/2020,,,19/01/2020,,,23/01/2020,4,8,4,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death026,,,cheng,female,76,18/01/2020,,,05/01/2020,,,24/01/2020,,6,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death027,,,deng,male,72,11/01/2020,,,18/01/2020,,,23/01/2020,7,12,5,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death028,,,hong,male,79,11/01/2020,,,17/01/2020,,,24/01/2020,6,13,7,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death029,,,le,male,55,08/01/2020,,,19/01/2020,,,24/01/2020,11,16,5,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death030,,,li,male,87,12/01/2020,,,19/01/2020,,,23/01/2020,7,11,4,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death031,,,liu,female,66,09/01/2020,,,19/01/2020,,,21/01/2020,10,12,2,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death032,,,liu,male,58,03/01/2020,,,18/01/2020,,,24/01/2020,15,21,6,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death033,,,liu,male,66,,,,11/01/2020,,,21/01/2020,,,10,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death034,,,luo,male,78,13/01/2020,,,23/01/2020,,,24/01/2020,10,11,1,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death035,,,song,male,65,12/01/2020,,,16/01/2020,,,23/01/2020,4,11,7,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death036,,,wu,male,67,10/01/2020,,,15/01/2020,,,24/01/2020,5,14,9,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death037,,,yang,male,58,27/12/2019,,,01/01/2020,,,23/01/2020,5,27,22,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death038,,,zhang,female,67,05/01/2020,,,12/01/2020,,,23/01/2020,7,18,11,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death039,,,zhou,female,82,10/01/2020,,,17/01/2020,,,23/01/2020,7,13,6,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.hubei.gov.cn/bmdt/ztzl/fkxxgzbdgrfyyq/xxfb/202001/t20200125_2014855.shtml
+death040,,,,male,88,,,,,,,25/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wsjkw.sh.gov.cn/xwfb/20200126/734a56a6c9684cebbac859e6fcb9a97c.html
+death041,,,,female,66,02/02/2020,,,03/02/2020,,,05/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,https://www.thepaper.cn/newsDetail_forward_5793776
+death042,,,,male,50,13/01/2020,,,21/01/2020,,,27/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wjw.beijing.gov.cn/wjwh/ztzl/xxgzbd/gzbdyqtb/202001/t20200130_1621744.html
+death043,,,,female,80,,,,23/01/2020,,,29/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wsjkw.sc.gov.cn/scwsjkw/gzbd02/2020/1/29/c2a30d6f17394d9e837aa78aadd7ab2d.shtml
+death044,,,weilang li,male,33,10/01/2020,,,13/01/2020,,,06/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,https://www.bbc.co.uk/news/world-asia-china-51364382
+death045,,date of report 07/02/2020 but no explicit date of death given,,male,55,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wsjkw.gd.gov.cn/zwyw_yqxx/content/post_2886516.html
+death046,,date of report 13/02/2020 but no explicit date of death given,,male,75,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wsjkw.gd.gov.cn/zwyw_yqxx/content/post_2893601.html
+death047,,,,female,80,,,,,,,17/01/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,http://wst.hainan.gov.cn/swjw/rdzt/yqfk/202001/t20200127_2741242.html
+death048,,,,female,85,23/01/2020,,,23/01/2020,,,08/02/2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.weibo.cn/status/4470091523664901?
