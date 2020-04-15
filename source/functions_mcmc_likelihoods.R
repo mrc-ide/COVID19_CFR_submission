@@ -128,7 +128,7 @@ cpp_loglike_otr <- "SEXP loglike(std::vector<double> params, std::vector<double>
   }
   
   // catch underflow in likelihood
-  if (!isfinite(ret)) {
+  if (!std::isfinite(ret)) {
     return Rcpp::wrap(-OVERFLO_DOUBLE);
   }
 
@@ -282,7 +282,7 @@ cpp_loglike_cfr <- "SEXP loglike(std::vector<double> params, std::vector<double>
   }  // end loop over international data
   
   // catch underflow in likelihood
-  if (!isfinite(ret)) {
+  if (!std::isfinite(ret)) {
     return Rcpp::wrap(-OVERFLO_DOUBLE);
   }
   
