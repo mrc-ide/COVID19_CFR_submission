@@ -13,7 +13,7 @@
 # future versions
 
 library(devtools)
-#devtools::install_github("mrc-ide/drjacoby", ref = "version1.0")
+#devtools::install_github("mrc-ide/drjacoby", ref = "version1.0")  # uncomment and run this line the first time through
 library(drjacoby)
 library(parallel)
 library(ggplot2)
@@ -58,8 +58,8 @@ x <- c(data$rel_date_onset,
 # MCMC parameters
 
 # sampling parameters
-burnin <- 1e2
-samples <- 1e2
+burnin <- 1e4
+samples <- 1e5
 chains <- 5
 run_parallel <- TRUE
 n_cores <- 5
@@ -101,7 +101,7 @@ if (run_parallel) {
 }
 
 # run MCMC
-set.seed(1)
+set.seed(2)
 t0 <- Sys.time()
 mcmc <- run_mcmc(data = x,
                  df_params = df_params,
