@@ -39,7 +39,7 @@ sim$time_outcome[!sim$died]<-sim$time_onset[!sim$died]+rgamma(length(which(!sim$
 sim$true_O2outcome<-sim$time_outcome-sim$time_onset
 
 ### now fit the simulated onset-outcome (for recoveries, but can also be done for deaths).
-source("utils_CFR.R")
+source("source/utils_CFR.R")
 # define  grid
 vmean <- seq(10, 100, 0.1)
 vs <- seq(0.2, 0.8, 0.01)
@@ -57,12 +57,13 @@ sim_trunc$observed_O2outcome[ind]<-day_obs  ## set to day of censoring
 sim_trunc$censored<-0  ## identify which have not been censored
 sim_trunc$censored[ind]<-1
 
-# refit to the observed values no allowing for growth
+# refit to the observed values not allowing for growth
 inds<-which(sim_trunc$censored==0 & !sim_trunc$died)
 cens<-rep(1000,length(inds))  ## to switch off cens, set it to be a big number.
 prob_O2R_m_s_obs_noR<-calcOnsetToOutcome(sim_trunc[inds,],r=0,var_name_outcome="observed_O2outcome")
-save_dist_stats("prob_O2R_m_s_obs_noR",prob_O2R_m_s_obs_noR,plot=T)
-res<-read.csv("prob_O2R_m_s_obs_noR_stats.csv")
+save_dist_stats("output/prob_O2R_m_s_obs_noR",prob_O2R_m_s_obs_noR,plot=T)
+
+res<-read.csv("output/prob_O2R_m_s_obs_noR_stats.csv")
 mean_mean_fit_obs_noR<-res$V1[res$X=="mean_mean"]
 mean_s_fit_obs_noR<-res$V1[res$X=="mean_s"]
 shape_fit_obs_noR <- 1/(mean_s_fit_obs_noR^2)
@@ -72,7 +73,8 @@ scale_fit_obs_noR=mean_mean_fit_obs_noR*mean_s_fit_obs_noR^2
 inds<-which(sim_trunc$censored==0 & !sim_trunc$died)
 cens<-rep(1000,length(inds))  ## to switch off cens, set it to be a big number.
 prob_O2R_m_s_obs_withR<-calcOnsetToOutcome(sim_trunc[inds,],r=0.14,var_name_outcome="observed_O2outcome")
-save_dist_stats("prob_O2R_m_s_obs_withR",prob_O2R_m_s_obs_withR,plot=T)
+save_dist_stats("output/prob_O2R_m_s_obs_withR",prob_O2R_m_s_obs_withR,plot=T)
+
 res<-read.csv("prob_O2R_m_s_obs_withR_stats.csv")
 mean_mean_fit_obs_withR<-res$V1[res$X=="mean_mean"]
 mean_s_fit_obs_withR<-res$V1[res$X=="mean_s"]
