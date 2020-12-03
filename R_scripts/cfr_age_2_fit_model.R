@@ -14,7 +14,13 @@
 # Loading Libraries
 set.seed(101092)
 source("source/mcmc_and_likelihood_functions.R")
-library(dplyr); library(ggplot2); library(tidyverse); library(drjacoby) 
+
+library(devtools)
+#devtools::install_github("mrc-ide/drjacoby", ref = "version1.0")  # uncomment and run this line the first time through
+library(drjacoby)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
 
 # Loading in Age and Location Disaggregated Case Data
 age_disaggregated_case_onset <- readRDS("data/age_disaggregated_onset_incidence_data.rds")
